@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gm": "^1.23.1",
     "images": "^3.2.3",
     "node-wget-promise": "^0.1.6"
   }
