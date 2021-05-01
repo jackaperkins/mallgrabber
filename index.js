@@ -92,10 +92,11 @@ async function main () {
   console.log("PIRACY COMPLETE 😈 ")
   console.log("magick time! writing out macro image to output directory")
 
-  const outputImage = images(iter.x*512, iter.y*512)
+  const outputImage = images((iter.x+1)*512, (iter.y+1)*512)
 
   for (let y = 0; y <= iter.y; y++) {
     for (let x = 0; x <= iter.x; x++) {
+      console.log(getDownloadUrl(downloadFolder, prefix, zoom, x,y))
       outputImage.draw(images(getDownloadUrl(downloadFolder, prefix, zoom, x,y)), x*512, y*512)
     }
   }
