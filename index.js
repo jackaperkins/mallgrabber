@@ -29,7 +29,11 @@ if (process.argv.length < 5) {
 let prefix = process.argv[2]
 let panoid = process.argv[3]
 let zoom = process.argv[4]
+let inside_mode = process.argv.length > 5
 
+if (inside_mode) {
+  console.log("Doing INSIDE mode")
+}
 
 let downloadFolder = path.join(__dirname, 'downloads', `${prefix}_z${zoom}`)
 
@@ -41,6 +45,9 @@ fs.rmdir(downloadFolder, { recursive: true }, () => {
 })
 
 function makeURL(panoid, x, y, zoom) {
+  if (inside_mode) {
+    return `https://lh3.ggpht.com/p/${panoid}=x${x}-y${y}-z${zoom}`
+  }
   return `https://streetviewpixels-pa.googleapis.com/v1/tile?cb_client=maps_sv.tactile&panoid=${panoid}&x=${x}&y=${y}&zoom=${zoom}&nbt=1&fover=2`
 }
 

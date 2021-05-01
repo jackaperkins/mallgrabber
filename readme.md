@@ -5,4 +5,5 @@
 
 
 # image library
+for reference only
 https://github.com/zhangyuanwei/node-images
