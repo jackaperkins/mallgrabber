@@ -90,13 +90,12 @@ async function main () {
   }
   console.log(" ")
   console.log("PIRACY COMPLETE 😈 ")
-  console.log("magick time! writing out macro image to output directory")
+  console.log("magic time! writing macro image to output directory")
 
   const outputImage = images((iter.x+1)*512, (iter.y+1)*512)
 
   for (let y = 0; y <= iter.y; y++) {
     for (let x = 0; x <= iter.x; x++) {
-      console.log(getDownloadUrl(downloadFolder, prefix, zoom, x,y))
       outputImage.draw(images(getDownloadUrl(downloadFolder, prefix, zoom, x,y)), x*512, y*512)
     }
   }
@@ -104,7 +103,7 @@ async function main () {
       quality : 50                
   })
 
-  console.log("Saved to output/"+path.join(output, `${prefix}_z${zoom}.jpg`))
+  console.log("Saved to "+path.join(output, `${prefix}_z${zoom}.jpg ! done!`))
   
 
 }
@@ -114,8 +113,8 @@ function getZoomIterators(zoomLevel) {
   return [
     {x:1,y:0},
     {x:3,y:1},
-    {x:6,y:3},
-    {x:12,y:6},
+    {x:7,y:3},
+    {x:15,y:7},
     {x:25,y:12}    
   ][zoomLevel]
 }
