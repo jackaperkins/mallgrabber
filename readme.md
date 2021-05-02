@@ -1,10 +1,12 @@
 # MALLGRABBER
 __steal google streetview panorama images__
 
+![stoneridge mall](example.jpg)
+
 currently doesnt work with zoom level 5, we can't stitch together an image that big but it will download the tiles into the repo/downloads folder
 
 ## INSTALL
-writen using node v12.13.1
+writen using node v12.13.1. installing node will come with npm too
 - in a terminal, change directory into this git repo!
 - run `npm install`
 
