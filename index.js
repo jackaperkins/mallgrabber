@@ -6,6 +6,8 @@ const fs_promise = require('fs').promises;
 const fs = require('fs')
 const images = require('images')
 
+const DEBUG_DRAW_PINK_LINES = false
+
 let scratch_dir = path.join(__dirname,'scratch')
 
 // ensure working directories
@@ -92,11 +94,15 @@ async function main () {
   console.log("PIRACY COMPLETE 😈 ")
   console.log("magic time! writing macro image to output directory")
 
-  const outputImage = images((iter.x+1)*512, (iter.y+1)*512)
+  const outputImage = images((iter.x+1)*512, (iter.y+1)*512).fill(0xff,0x00,0xff)
 
   for (let y = 0; y <= iter.y; y++) {
     for (let x = 0; x <= iter.x; x++) {
-      outputImage.draw(images(getDownloadUrl(downloadFolder, prefix, zoom, x,y)), x*512, y*512)
+      if (DEBUG_DRAW_PINK_LINES) {
+        outputImage.draw(images(getDownloadUrl(downloadFolder, prefix, zoom, x,y)).resize(506,506), x*512, y*512)
+      } else {
+        outputImage.draw(images(getDownloadUrl(downloadFolder, prefix, zoom, x,y)), x*512, y*512)
+      }
     }
   }
   outputImage.save(path.join(output, `${prefix}_z${zoom}.jpg`), {               //Save the image to a file, with the quality of 50
@@ -113,8 +119,8 @@ function getZoomIterators(zoomLevel) {
   return [
     {x:1,y:0},
     {x:3,y:1},
-    {x:7,y:3},
-    {x:15,y:7},
+    {x:6,y:3},
+    {x:12,y:6},
     {x:25,y:12}    
   ][zoomLevel]
 }
